@@ -28,9 +28,13 @@ function App() {
     <div className="min-h-screen bg-gray-100">
       <Navbar cartCount={cartCount} onOpenCart={() => setCartOpen(true)} />
 
-      <main className="container mx-auto p-4">
-        <h2 className="text-2xl font-semibold mb-4">Products</h2>
-        <ProductGrid onCartUpdate={refreshCartCount} />
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">
+            Discover Our Products
+          </h1>
+          <ProductGrid onCartUpdate={refreshCartCount} />
+        </div>
       </main>
 
       <Cart isOpen={isCartOpen} onClose={() => setCartOpen(false)} onCartChange={refreshCartCount} />

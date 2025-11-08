@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
 
+// GET /api/products/debug - Get database status
+router.get('/debug', async (req, res) => {
+  try {
+    const count = await Product.countDocuments();
+    const products = await Product.find().select('_id name');
+    res.json({
+      totalProducts: count,
+      products: products
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // GET /api/products - Get all products with filtering and sorting
 router.get('/', async (req, res) => {
   try {
