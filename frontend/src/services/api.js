@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
-export async function getProducts() {
-	const res = await axios.get(`${BASE}/products`);
+export async function getProducts(params = {}) {
+	const res = await axios.get(`${BASE}/products`, { params });
 	return res.data;
 }
 
