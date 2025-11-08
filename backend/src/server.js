@@ -17,6 +17,14 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ecom_cart
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
+// Seed sample products if none exist
+try {
+  const { seedIfEmpty } = require('./seed');
+  seedIfEmpty();
+} catch (err) {
+  console.warn('Seed module not available:', err.message);
+}
+
 // Routes
 app.use('/api/products', require('./routes/products'));
 app.use('/api/cart', require('./routes/cart'));
