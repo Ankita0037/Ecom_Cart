@@ -1,61 +1,146 @@
-# Ecom_Cart — Mock E‑Commerce Cart
+Vibe Commerce - Shopping Cart Application
+A complete full-stack shopping cart application built with React, Node.js, and MongoDB. This project demonstrates a modern e-commerce workflow with product browsing, cart management, and checkout functionality.
 
-This repository contains a full-stack mock e-commerce cart application built to satisfy the Vibe Commerce screening task.
+Project Overview
+This is a full-stack e-commerce cart application that provides a seamless shopping experience. Users can browse products, manage their shopping cart, and complete purchases with a mock checkout system.
 
-Structure
-- backend/: Node + Express + MongoDB API
-- frontend/: React app (Create React App) with Tailwind CSS styling
+Technology Stack
+Frontend: React.js with modern hooks
 
-Features
-- GET /api/products — returns sample products
-- GET /api/cart — returns cart with items and total
-- POST /api/cart — add { productId, quantity }
-- DELETE /api/cart/:id — remove item by product id
-- POST /api/cart/checkout — mock checkout → returns receipt (total, timestamp)
+Backend: Node.js with Express.js
 
-Frontend
-- Product grid with "Add to Cart"
-- Cart sliding panel with quantity update, remove, total
-- Checkout form (name/email) → shows receipt
-- Responsive design using Tailwind CSS
+Database: MongoDB for data persistence
 
-Setup (Windows PowerShell)
+API: RESTful architecture
 
-1. Start the backend
+Project Structure
+text
+Ecom_Cart/
+ backend/          # Node.js/Express server
+ frontend/         # React application
+ README.md         # This file
+Installation Guide
+Prerequisites
+Node.js installed on your system
 
-```powershell
+MongoDB running locally or connection string
+
+Git for version control
+
+Step 1: Backend Setup
+Navigate to the backend directory:
+
+bash
 cd backend
+Install dependencies:
+
+bash
 npm install
-# ensure MongoDB is running locally (or set MONGODB_URI in .env)
-npm run start
-```
+Create environment file:
+Create a .env file in the backend directory with:
 
-The backend will run on http://localhost:5000 and will seed sample products on first run.
+text
+MONGODB_URI=mongodb://localhost:27017/ecomcart
+PORT=5000
+Start the backend server:
 
-2. Start the frontend
-
-```powershell
-cd frontend
-npm install
-# If you want Tailwind to work, these dev dependencies are included in package.json.
+bash
 npm start
-```
+The backend will run on http://localhost:5000
 
-The React app will run on http://localhost:3000 by default.
+Step 2: Frontend Setup
+Open a new terminal and navigate to the frontend directory:
 
-Notes
-- Tailwind is configured (postcss + tailwind.config.js). After running `npm install` in `frontend`, CRA will pick up PostCSS and Tailwind.
-- The backend uses a simple single-cart model (no auth) to keep the project focused on e‑com flows.
+bash
+cd frontend
+Install dependencies:
 
-Deliverables to submit
-- This GitHub repository (push to your account)
-- README with setup and explanation (this file)
-- A 1–2 minute demo video (Loom/YouTube unlisted) showing adding items, updating quantities, and checkout
+bash
+npm install
+Start the React application:
 
-If you want, I can:
-- Add scripts to build/deploy or Dockerfiles
-- Improve form validation and add tests
-- Integrate Fake Store API as an alternate product source
+bash
+npm start
+The frontend will open at http://localhost:3000
 
----
-I updated the frontend components to use Tailwind and wired them to the backend API. Start both servers and open the React app to try it. If you want, I can now run quick checks (install & start) here or add unit tests.
+Features Implemented
+Backend Features
+RESTful API for product management
+
+Cart operations (add, remove, update)
+
+Checkout processing with receipt generation
+
+MongoDB integration for data persistence
+
+Error handling and validation
+
+Frontend Features
+Responsive product grid layout
+
+Interactive shopping cart
+
+Real-time quantity updates
+
+Checkout form with validation
+
+Order confirmation receipt
+
+Mobile-friendly design
+
+API Endpoints
+GET /api/products - Fetch all products
+
+POST /api/cart - Add item to cart
+
+DELETE /api/cart/:id - Remove item from cart
+
+GET /api/cart - Get cart contents with totals
+
+POST /api/checkout - Process order and generate receipt
+
+Usage Instructions
+Browse Products: View the product grid on the main page
+
+Add to Cart: Click "Add to Cart" on any product
+
+Manage Cart: View cart to update quantities or remove items
+
+Checkout: Fill out customer information and submit order
+
+Receipt: View order confirmation with total and timestamp
+
+Demo Video
+A complete walkthrough of the application features is available in the demo video. The video covers:
+
+Backend API functionality
+
+Frontend user interface
+
+Cart management operations
+
+Checkout process
+
+Responsive design demonstration
+
+Development Notes
+The application uses a mock product database
+
+Cart data persists across sessions
+
+No real payment processing involved
+
+Focus on clean code and user experience
+
+Future Enhancements
+User authentication system
+
+Product search and filtering
+
+Order history tracking
+
+Product categories
+
+Image upload for products
+
+Email confirmation for orders
