@@ -9,13 +9,30 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5000'],
+  credentials: true
+}));
 app.use(express.json());
+
+// Log all requests
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`, req.body);
+  next();
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ecom_cart')
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
+
+// Seed sample products if none exist
+try {
+  const { seedIfEmpty } = require('./seed');
+  seedIfEmpty();
+} catch (err) {
+  console.warn('Seed module not available:', err.message);
+}
 
 // Routes
 app.use('/api/products', require('./routes/products'));
